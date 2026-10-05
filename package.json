@@ -1,0 +1,27 @@
+{
+  "name": "ip-tikshuv-game",
+  "version": "1.0.0",
+  "description": "קוסמי הרשת - משחק עולם פתוח תלת מימדי ללימוד כתובות IP ו-DHCP",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "start": "python3 -m http.server 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tikshuvccna/ip-tikshuv-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tikshuvccna/ip-tikshuv-game/issues"
+  },
+  "homepage": "https://github.com/tikshuvccna/ip-tikshuv-game#readme",
+  "dependencies": {
+    "esbuild": "^0.28.2",
+    "three": "^0.186.1"
+  },
+  "private": true,
+  "type": "module"
+}
