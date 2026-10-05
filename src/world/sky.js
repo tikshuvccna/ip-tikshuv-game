@@ -42,7 +42,7 @@ export function createSky() {
         if (y>0.0){
           vec2 sp = d.xz/(d.y+0.25)*90.; vec2 cell = floor(sp);
           float s = hash21(cell); float tw = 0.6+0.4*sin(uTime*2.0+s*50.);
-          float st = step(0.985,s)*smoothstep(0.0,0.25,y)*tw;
+          float st = step(0.99,s)*smoothstep(0.0,0.25,y)*tw;
           vec2 fr = fract(sp)-0.5; st *= smoothstep(0.5,0.0,length(fr));
           col += vec3(1.0,0.95,0.85)*st*uNight*2.0;
           vec2 cp = d.xz/(y+0.18)*0.9 + vec2(uTime*0.006, uTime*0.002);
@@ -250,9 +250,9 @@ export class Atmosphere {
     this.sun.position.copy(this.sun.target.position).addScaledVector(this.sunDir, 280);
     this.sun.castShadow = elev > 0.02 && this.shadowsOn !== false;
     this.visionK += (this.vision - this.visionK) * Math.min(1, dt * 1.5);
-    this.moon.intensity = 0.55 * this.night + 1.4 * this.visionK * this.night;
+    this.moon.intensity = 0.95 * this.night + 1.4 * this.visionK * this.night;
     this.moon.position.copy(focus).addScaledVector(this.sunDir, -300);
-    this.hemi.intensity = lerp(0.18, 1.05, dayK) + 0.1 * twiK + 0.55 * this.visionK * this.night;
+    this.hemi.intensity = lerp(0.34, 1.05, dayK) + 0.1 * twiK + 0.55 * this.visionK * this.night;
     this.hemi.color.copy(this.colors.top).lerp(tmpA.set('#ffffff'), 0.55);
     this.hemi.groundColor.set('#4a5a30').multiplyScalar(lerp(0.25, 1, dayK));
 

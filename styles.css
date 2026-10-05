@@ -126,7 +126,7 @@ kbd { display: inline-block; padding: 1px 8px; border-radius: 7px; background: l
 .crosshair { position: absolute; top: 50%; left: 50%; width: 22px; height: 22px; margin: -11px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, .7); box-shadow: 0 0 8px rgba(0, 0, 0, .7), inset 0 0 6px rgba(0,0,0,.5); }
 .crosshair::after { content: ''; position: absolute; top: 50%; left: 50%; width: 4px; height: 4px; margin: -2px; background: var(--gold); border-radius: 50%; }
 body:not(.locked-ui) .crosshair { opacity: .85; }
-.prompt { position: absolute; bottom: 150px; left: 50%; transform: translateX(-50%); background: var(--glass); border: 1px solid var(--gold); color: #fff; padding: 10px 22px; border-radius: 16px; font-size: 17px; font-weight: 700; box-shadow: 0 0 24px rgba(255, 211, 92, .35); animation: fadeUp .25s; white-space: nowrap; max-width: 92vw; overflow: hidden; text-overflow: ellipsis; }
+.prompt { position: absolute; bottom: 150px; left: 50%; transform: translateX(-50%); background: var(--glass); border: 1px solid var(--gold); color: #fff; padding: 10px 22px; border-radius: 16px; font-size: 17px; font-weight: 700; box-shadow: 0 0 24px rgba(255, 211, 92, .35); animation: fadeUpC .25s; white-space: nowrap; max-width: 92vw; overflow: hidden; text-overflow: ellipsis; }
 .spellbar { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; direction: ltr; }
 .slot { width: 58px; height: 58px; border-radius: 16px; background: var(--glass); border: 2px solid var(--line); position: relative; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all .15s; }
 .slot-icon { font-size: 28px; filter: drop-shadow(0 2px 4px #000); }
@@ -163,7 +163,7 @@ body:not(.locked-ui) .crosshair { opacity: .85; }
 #fade.on { opacity: 1; }
 
 /* ---------- דיאלוג ---------- */
-.dialogue { position: fixed; bottom: 150px; left: 50%; transform: translateX(-50%); width: min(660px, 92vw); z-index: 45; background: linear-gradient(180deg, var(--parch), var(--parch2)); color: var(--ink); border: 3px solid #b89a5a; border-radius: 20px; padding: 16px 22px 14px; box-shadow: var(--shadow); animation: fadeUp .3s; }
+.dialogue { position: fixed; bottom: 150px; left: 50%; transform: translateX(-50%); width: min(660px, 92vw); z-index: 45; animation: fadeUpC .3s; background: linear-gradient(180deg, var(--parch), var(--parch2)); color: var(--ink); border: 3px solid #b89a5a; border-radius: 20px; padding: 16px 22px 14px; box-shadow: var(--shadow); }
 .dlg-name { position: absolute; top: -16px; right: 24px; background: linear-gradient(180deg, #6c4cff, #4a2fc4); color: #fff; font-weight: 900; padding: 3px 18px; border-radius: 14px; border: 2px solid #fff; font-size: 15px; }
 .dlg-text { font-size: 17px; line-height: 1.6; font-weight: 500; margin-top: 4px; }
 .dlg-actions { display: flex; gap: 10px; margin-top: 12px; justify-content: flex-end; flex-wrap: wrap; }
@@ -469,3 +469,17 @@ body.touch .prompt { bottom: 220px; }
 .term-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 10px 8px; background: rgba(0, 0, 0, .3); }
 .chip { border: 1px solid rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .08); color: #e8ecff; font: 600 11.5px ui-monospace, monospace; padding: 3px 9px; border-radius: 9px; cursor: pointer; }
 .chip:hover { background: rgba(255, 211, 92, .25); border-color: var(--gold); }
+
+.term-row{unicode-bidi:plaintext}
+.pcpanel{unicode-bidi:plaintext}
+
+@keyframes fadeUpC { from { opacity: 0; transform: translateX(-50%) translateY(10px); } to { opacity: 1; transform: translateX(-50%); } }
+.victory { position: fixed; inset: 0; z-index: 140; background: radial-gradient(circle at 50% 30%, rgba(60,40,140,.92), rgba(5,6,30,.96)); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.victory > i { position: absolute; top: -20px; width: 10px; height: 16px; border-radius: 3px; animation: confetti 4s linear infinite; }
+@keyframes confetti { to { transform: translateY(110vh) rotate(720deg); } }
+.cert { position: relative; background: linear-gradient(180deg, var(--parch), var(--parch2)); color: var(--ink); border: 6px double #b89a5a; border-radius: 26px; padding: 26px 40px; text-align: center; width: min(640px, 92vw); box-shadow: 0 0 80px rgba(255,211,92,.5); animation: fadeUp .8s; }
+.cert-top { font-size: 64px; animation: float 3s infinite; }
+.cert h1 { font: 400 clamp(30px, 5vw, 46px) var(--title-font); margin: 0; color: #3b2a8a; }
+.cert-name { font: 400 40px var(--title-font); color: #c0392b; margin: 6px 0; }
+.cert-stats { display: flex; gap: 14px; justify-content: center; font-weight: 900; font-size: 20px; margin: 10px 0; }
+.mini { color: #7a6a9a; font-size: 14px; }

@@ -23,8 +23,10 @@ export function makeTerminal({ theme = 'win', prompt = 'C:\\>', title = '', onCo
     setPrompt(p) { t.prompt = p; pEl.textContent = p; },
     print(text, cls = '') {
       const parts = String(text).split('\n');
-      for (const p of parts) out.append(h('div', { class: 'term-row ' + cls }, p === '' ? '\u00a0' : p));
+      let last = null;
+      for (const p of parts) { last = h('div', { class: 'term-row ' + cls }, p === '' ? '\u00a0' : p); out.append(last); }
       out.scrollTop = out.scrollHeight;
+      return last;
     },
     clear() { out.innerHTML = ''; },
     focus() { input.focus(); },

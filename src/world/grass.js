@@ -13,7 +13,7 @@ function bladeTexture() {
     const hgt = 70 + ((i * 37) % 50);
     const lean = ((i * 53) % 21) - 10;
     const grad = g.createLinearGradient(0, 128, 0, 128 - hgt);
-    grad.addColorStop(0, '#2d5a1d');
+    grad.addColorStop(0, '#4a8a30');
     grad.addColorStop(1, '#d6f58a');
     g.fillStyle = grad;
     g.beginPath();
@@ -171,10 +171,10 @@ export class Grass {
         if (skip) continue;
         if (h > 150) continue;
         const sm = swampMask(x, z), am = autumnMask(x, z), em = enchantedMask(x, z);
-        const sc = (0.7 + hash2(wx0, wz0, 4) * 0.9) * (1 + em * 0.3);
+        const sc = (0.45 + hash2(wx0, wz0, 4) * 0.55) * (1 + em * 0.3);
         d.position.set(x, h - 0.04, z);
         d.rotation.set(0, hash2(wx0, wz0, 5) * 6.28, 0);
-        d.scale.set(sc, sc * (0.8 + hash2(wx0, wz0, 6) * 0.7), sc);
+        d.scale.set(sc, sc * (0.7 + hash2(wx0, wz0, 6) * 0.5), sc);
         d.updateMatrix();
         d.matrix.toArray(J.m, J.cnt * 16);
         col.setRGB(0.75 + hash2(wx0, wz0, 7) * 0.4, 0.95 + hash2(wx0, wz0, 8) * 0.15, 0.7);

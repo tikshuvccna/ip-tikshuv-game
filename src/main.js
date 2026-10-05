@@ -31,6 +31,7 @@ const camera = new THREE.PerspectiveCamera(62, innerWidth / innerHeight, 0.3, 60
 const world = new World(renderer, state.settings.quality);
 const game = { renderer, camera, world, mode: 'loading' };
 window.__game = game;
+window.__state = state;
 
 function applyPixelRatio() {
   const q = state.settings.quality;
@@ -196,6 +197,11 @@ game.closeLearn = () => {
   game.session = null;
   game.ui.refreshBadge();
   save();
+  if (completedCount() === 7 && !state.victory) {
+    state.victory = true;
+    save();
+    setTimeout(() => game.ui.showVictory(), 500);
+  }
 };
 
 // ------------------------------------------------------------------

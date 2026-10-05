@@ -179,7 +179,7 @@ export class UI {
     this.closeDialogue();
     const box = h('div', { class: 'dialogue' },
       h('div', { class: 'dlg-name' }, name),
-      h('div', { class: 'dlg-text' }, text),
+      h('div', { class: 'dlg-text', html: text }),
       h('div', { class: 'dlg-actions' }, ...(opts.actions || []).map((a) => h('button', { class: 'btn ' + (a.cls || ''), onclick: () => { this.closeDialogue(); a.fn(); } }, a.label)),
         h('button', { class: 'btn ghost', onclick: () => this.closeDialogue() }, opts.close || 'סגור (E)')));
     document.body.append(box);
@@ -187,6 +187,25 @@ export class UI {
     sfx('click');
     clearTimeout(this.dlgTimer);
     this.dlgTimer = setTimeout(() => { if (this.dialogue === box && !opts.actions) this.closeDialogue(); }, opts.ms || 9000);
+  }
+
+  showVictory() {
+    const hs = HOUSES[state.house] || HOUSES[1];
+    const conf = Array.from({ length: 60 }, (_, i) => h('i', { style: { left: Math.random() * 100 + '%', animationDelay: Math.random() * 3 + 's', background: ['#ffd35c', '#4de1ff', '#ff5a7a', '#3ddc97', '#9a7bff'][i % 5] } }));
+    const box = h('div', { class: 'victory' }, ...conf,
+      h('div', { class: 'cert' },
+        h('div', { class: 'cert-top' }, '👑'),
+        h('h1', {}, 'תעודת מאסטר הרשת'),
+        h('p', {}, 'מוענקת בזאת ל'),
+        h('div', { class: 'cert-name' }, state.name),
+        h('p', {}, `מ${hs.name} על שליטה מלאה בכתובות IP: מבנה, רשת ומארח, פרטי וציבורי, סטטי ודינמי, DHCP, הגדרות במחשב ובראוטר סיסקו.`),
+        h('div', { class: 'cert-stats' }, h('span', {}, `✨ ${formatNum(state.score)} נקודות`), h('span', {}, `★ ${starsTotal()}/21 כוכבים`)),
+        h('p', { class: 'mini' }, 'עכשיו אפשר לשפר שיאים, לאסוף את כל המטאטאים ולמצוא סניצ׳ים!'),
+        h('button', { class: 'btn big gold', onclick: () => { box.remove(); this.overlayOpen = Math.max(0, this.overlayOpen - 1); this.game.player.frozen = false; } }, 'המשך להסתובב בעולם')));
+    this.overlayOpen++;
+    this.game.player.frozen = true;
+    document.body.append(box);
+    sfx('levelup');
   }
 
   closeDialogue() {
