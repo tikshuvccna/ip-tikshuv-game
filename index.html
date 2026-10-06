@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#0f1330" />
+  <title>קוסמי הרשת – משחק עולם קסום ללימוד כתובות IP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Secular+One&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div id="hud" class="hidden"></div>
+  <div id="toasts"></div>
+  <div id="overlay" class="hidden"></div>
+  <div id="menu" class="hidden"></div>
+  <div id="title" class="screen"></div>
+  <div id="loading" class="screen"></div>
+  <div id="touch-stick" aria-hidden="true"><div id="touch-knob"></div></div>
+  <div id="touch-buttons" aria-hidden="true">
+    <button data-key="Cast">✨</button>
+    <button data-key="Space">⤒</button>
+    <button data-key="KeyE">E</button>
+    <button data-key="KeyB">🧹</button>
+    <button data-key="KeyQ">⇄</button>
+    <button data-key="Shift">⚡</button>
+  </div>
+  <noscript>המשחק דורש JavaScript.</noscript>
+  <script src="dist/game.js"></script>
+</body>
+</html>
